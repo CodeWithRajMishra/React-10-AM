@@ -3,15 +3,12 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 const Display=()=>{
     const [mydata, setMydata] = useState([]);
-
-
     const loadData=()=>{
         let api="http://localhost:3000/books";
         axios.get(api).then((res)=>{
             setMydata(res.data);
         })
     }
-
     useEffect(()=>{
         loadData();
     }, [])
@@ -24,8 +21,7 @@ const Display=()=>{
                 <td> {key.price} </td>
                 <td> {key.author_name} </td>
                 <td> {key.publish_year} </td>
-              </tr>
-            
+              </tr>       
             </>
         )
     })
@@ -33,12 +29,10 @@ const Display=()=>{
     return(
         <>
          <h1> Display Books</h1>
-
-
-         <Table striped bordered hover>
+         <Table striped bordered hover style={{width:"50%"}}>
       <thead>
         <tr>
-          <th> Book name</th>
+          <th>Book name</th>
           <th>Price</th>
           <th>Author Name</th>
           <th>Publish Year</th>
@@ -49,10 +43,8 @@ const Display=()=>{
       {ans}
     </tbody>
     </Table>
-
-        
+       
         </>
     )
 }
-
 export default Display;
